@@ -25,5 +25,6 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:onClick="onClickBtnAddStudents"
-        android:text="@string/btn_students" />
+        android:text="@string/btn_students"
+        tools:ignore="OnClick" />
 </LinearLayout>

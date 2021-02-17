@@ -1,27 +1,49 @@
 package com.example.mycounter;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.app.Activity;
+import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends Activity {
 
-public class MainActivity extends AppCompatActivity {
-    private Integer counter = 0;
+    public static int counter = 0;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toast.makeText(this, "onCreate()", Toast.LENGTH_LONG).show();
     }
 
-    @SuppressLint("SetTextI18n")
-    public void onClickBtnAddStudents(View view) {
+    public void addStudent(View view) {
         counter++;
-        TextView counterView = findViewById(R.id.txt_counter);
-        counterView.setText(counter.toString());
+        TextView counterView = findViewById(R.id.counter);
+        counterView.setText(counter + "");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("keyOne", counter);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        counter = savedInstanceState.getInt("keyOne");
     }
 }
